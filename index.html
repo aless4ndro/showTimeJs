@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Affichage de l'heure à la seconde près</title>
+
+  <style>
+    body {
+      background-color: #f1f1f1;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      color: #face87;
+    }
+
+    .section1 {
+      background-color: #6e6d6d;
+      padding: 20px;
+      margin: 20px;
+      border: 1px solid #e5b3b3;
+    }
+
+    .section2 {
+      background-color: #fff;
+      padding: 20px;
+      margin: 20px;
+      border: 1px solid #ddd;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="section1">
+    <h1>Date&Heure</h1>
+    <p><b>Il est actuellement : <span id="heure"></span></b></p>
+    <p<b>Nous somme le : <span id="date"></span></b></p>
+  </div>
+
+
+
+
+
+  <!-- Demandeur une heure a l utitlisateur -->
+  <div class="section2">
+    <form>
+      <h1>Heure de réveil</h1>
+      <p><b>Quelle heure voulez-vous vous réveiller ?</b></p>
+      <form action="index.html" method="post">
+        <input type="time" name="heure" value="heure">
+        <input type="submit" value="Valider">
+        <p class="heure-reveil"><b>Vous vous reveillerez a : <span id="result"></span></b></p>
+        <button id="reset-btn">Réinitialiser</button>
+      </form>
+  </div>
+
+
+
+
+
+  <script>
+
+    function afficherHeure() {
+      const maintenant = new Date();
+      const heure = maintenant.toLocaleTimeString();
+      document.getElementById("heure").innerHTML = heure;
+    }
+
+    setInterval(afficherHeure, 1000); // Actualisation toutes les secondes
+
+    afficherHeure(); // Appel initial
+
+
+    function afficherDate() {
+      const maintenant = new Date();
+      const date = maintenant.toLocaleDateString();
+      document.getElementById("date").innerHTML = date;
+    }
+
+    setInterval(afficherDate, 1000); // Actualisation toutes les secondes
+
+    afficherDate(); // Appel initial
+
+
+
+    function afficherHeure() {
+      const maintenant = new Date();
+      const heure = maintenant.toLocaleTimeString();
+      document.getElementById("heure").innerHTML = heure;
+    }
+
+    setInterval(afficherHeure, 1000); // Actualisation toutes les secondes
+    afficherHeure(); // Appel initial
+
+    function afficherDate() {
+      const maintenant = new Date();
+      const date = maintenant.toLocaleDateString();
+      document.getElementById("date").innerHTML = date;
+    }
+
+    setInterval(afficherDate, 1000); // Actualisation toutes les secondes
+    afficherDate(); // Appel initial
+
+
+    // Récupération de l'heure de réveil
+    const reveil = document.querySelector("input[type='time']");
+    const reveilBtn = document.querySelector("input[type='submit']");
+    const reveilResult = document.querySelector(".heure-reveil span");
+    const resetBtn = document.querySelector("#reset-btn");
+
+
+    reveilBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      reveilResult.textContent = reveil.value;
+    });
+
+    resetBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      reveil.value = "";
+      reveilResult.textContent = "";
+    });
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>
